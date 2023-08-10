@@ -8,12 +8,61 @@ editor: visual
 
 ```{r}
 library(palmerpenguins)
-library(tidyverse)
 library(GGally)
 library(skimr)
+
+library(tidyverse)
 ```
+
+## Basic Data Exploration
+
+-   names: get variable names
+
+-   dim: get data dimensions
+
+-   head: get first n lines (6 by default)
+
+-   tail: get last n lines (6 by default)
+
+-   summary: get basic summary statistics
 
 ```{r}
 view(penguins)
+
+
+```
+
+```{r}
+# check column names
 names(penguins)
+
+```
+
+```{r}
+# check the dimensions
+dim(penguins)
+```
+
+```{r}
+# get a summary
+#(df.describe() in pandas)
+
+summary(penguins)
+```
+
+```{r}
+# print the first 6 lines
+# df.head() in pandas
+
+head(penguins)
+```
+
+```{r}
+# Print the last 6 lines 
+tail(penguins) # See df.tail() in pandas
+```
+
+```{r}
+# Make a pairplot
+GGally::ggpairs(penguins)
 ```

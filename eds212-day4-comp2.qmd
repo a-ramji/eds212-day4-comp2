@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 
-## Exploring Data in R 
+## Exploring Data in R
 
 ```{r}
 library(palmerpenguins)
@@ -29,7 +29,6 @@ library(tidyverse)
 ```{r}
 view(penguins)
 
-
 ```
 
 ```{r}
@@ -43,11 +42,7 @@ names(penguins)
 dim(penguins)
 ```
 
-```{r}
-# get a summary
-#(df.describe() in pandas)
-
-summary(penguins)
+```         
 ```
 
 ```{r}
@@ -60,9 +55,57 @@ head(penguins)
 ```{r}
 # Print the last 6 lines 
 tail(penguins) # See df.tail() in pandas
+
+
 ```
 
 ```{r}
-# Make a pairplot
-GGally::ggpairs(penguins)
+# get summary of data, look at NAs
+
+summary(penguins)
+
+
+```
+
+```{r}
+skimr::skim(penguins)
+```
+
+tries to show a lot of types of viz to compare variables, groups
+
+as we move along the diagonal, anytime we see a histogram its categorical??
+
+if we look at relationship b/w bill length (mm) vs. body mass (g) (2nd column) ...?
+
+"pairs plot"
+
+replaces iris :)
+
+nice version:
+
+```{r}
+# Scatterplot example 1: penguin flipper length versus body mass
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species, 
+                 shape = species),
+             size = 2) +
+  scale_color_manual(values = c("darkorange","darkorchid","cyan4")) 
+```
+
+```{r}
+
+# Scatterplot example 2: penguin bill length versus bill depth
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species, 
+                 shape = species),
+             size = 2)  +
+  scale_color_manual(values = c("darkorange","darkorchid","cyan4"))
+```
+
+```{r}
+penguins %>%
+  select(species, body_mass_g, ends_with("_mm")) %>% 
+  GGally::ggpairs(aes(color = species)) +
+  scale_colour_manual(values = c("darkorange","purple","cyan4")) +
+  scale_fill_manual(values = c("darkorange","purple","cyan4"))
 ```

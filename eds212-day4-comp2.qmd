@@ -1,0 +1,19 @@
+---
+title: "eds212-day4-comp2"
+format: html
+editor: visual
+---
+
+## Exploring Data in R 
+
+```{r}
+library(palmerpenguins)
+library(tidyverse)
+library(GGally)
+library(skimr)
+```
+
+```{r}
+view(penguins)
+names(penguins)
+```

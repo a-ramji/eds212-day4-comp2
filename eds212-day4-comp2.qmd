@@ -133,6 +133,7 @@ ggplot(data = penguins, aes(x = flipper_length_mm,
 ```{r}
 ggplot(data = penguins, aes(x = species,
                             y = bill_length_mm)) +
-  geom_boxplot() +
+  geom_boxplot(fill = "yellow", aes(color = island)) +
+  geom_jitter(alpha = 0.5, aes(size = bill_depth_mm, fill = bill_depth_mm)) +
   theme_minimal()
 ```

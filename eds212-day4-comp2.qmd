@@ -2,6 +2,8 @@
 title: "eds212-day4-comp2"
 format: html
 editor: visual
+execute: 
+  warning: FALSE
 ---
 
 ## Exploring Data in R
@@ -12,7 +14,10 @@ library(GGally)
 library(skimr)
 
 library(tidyverse)
+
 ```
+
+echo -- setting to false = code doesn't show when rendered
 
 ## Basic Data Exploration
 
@@ -108,4 +113,26 @@ penguins %>%
   GGally::ggpairs(aes(color = species)) +
   scale_colour_manual(values = c("darkorange","purple","cyan4")) +
   scale_fill_manual(values = c("darkorange","purple","cyan4"))
+```
+
+## Making more exploratory charts in ggplot 2
+
+histogram
+
+based on variable, within aes, based on constant, outside
+
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm,
+                            fill = island)) +
+  geom_histogram() +
+  theme_minimal()
+```
+
+## Box plot!
+
+```{r}
+ggplot(data = penguins, aes(x = species,
+                            y = bill_length_mm)) +
+  geom_boxplot() +
+  theme_minimal()
 ```
